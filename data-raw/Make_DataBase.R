@@ -136,6 +136,8 @@ for( i in 1:20 ){
   Passes    <- Passes    %>% rbind(NewPasses)
 }
 
+Customers <- Customers %>%
+  select(PersonID, GivenName, Surname, StreetAddress, City, State, ZipCode, Gender, Birthday)
 usethis::use_data(Customers, overwrite = TRUE)
 
 
@@ -189,6 +191,9 @@ for( i in 1:20 ){
     penalty=Penalty)
 }
 
+Passes <- Passes %>%
+  mutate(PassID = paste('Pass',1:n(), sep='_')) %>%
+  select(PersonID, PassID, Season, PassType, Start, End)
 
 usethis::use_data(Passes, overwrite = TRUE)
 usethis::use_data(PatrolIssues, overwrite=TRUE)
