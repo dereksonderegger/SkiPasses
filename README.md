@@ -6,12 +6,14 @@ season passes they've sold over a number of years.
 The database includes the following tables:
 
 ## Customers 
+The `Customers` table contains one row for each customer.
+
 | Column |  Interpretation          |
 |:------:|:-------------------------|
 | `PersonID` | The database key identifier.  |
-| `GivenName`| The customers first name. |
-| `Surname`  | The customers last name.  |
-| `StreetAddress` | The customers Street address.  |
+| `GivenName`| The customer's first name. |
+| `Surname`  | The customer's last name.  |
+| `StreetAddress` | The customer's Street address.  |
 | `City` | The customer's City.|
 | `State` | The customer's State |
 | `ZipCode` | The customer's Zip Code. |
@@ -19,6 +21,10 @@ The database includes the following tables:
 | `Birthday` | The customer's birthday  |
 
 ## Passes
+The `Passes` table contains rows for each pass sold. If a pass gets suspended
+for some reason, the `End` data will be updated. If the pass is subsequently
+re-instated, a new row will be inserted with the same PassID.
+
 |  Column  |   Interpretation                    |
 |:--------:|:------------------------------------|
 | `PersonID` | The database key identifier for a person. |

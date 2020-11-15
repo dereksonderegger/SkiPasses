@@ -149,6 +149,11 @@ Passes <- Passes %>%
                       ymd('2020-4-15'),
                       ymd('2021-4-15')))
 
+Passes <- Passes %>%
+  mutate(PassID = paste('Pass',1:n(), sep='_')) %>%
+  select(PersonID, PassID, Season, PassType, Start, End)
+
+
 insert_warning <- function(personID, date, issue, penalty=1){
   # browser()
   current <- Passes %>%
@@ -191,9 +196,6 @@ for( i in 1:20 ){
     penalty=Penalty)
 }
 
-Passes <- Passes %>%
-  mutate(PassID = paste('Pass',1:n(), sep='_')) %>%
-  select(PersonID, PassID, Season, PassType, Start, End)
 
 usethis::use_data(Passes, overwrite = TRUE)
 usethis::use_data(PatrolIssues, overwrite=TRUE)
