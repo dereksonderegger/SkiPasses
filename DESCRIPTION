@@ -1,0 +1,21 @@
+Package: SkiPasses
+Type: Package
+Title: Toy Example Database
+Version: 0.1.0
+Author: Derek Sonderegger
+Maintainer: The package maintainer <derek.sonderegger@gmail.com>
+Description: This is a toy example for a teaching. It simulates a ski area
+    that sells season passes. It has tables for Customers, Pass Types,
+    Passes, and Blackout Dates.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    R (>= 2.10),
+    magrittr
+Requires:
+    DBI,
+    tidyverse,
+    lubridate,
+    dbplyr
+RoxygenNote: 7.1.1
