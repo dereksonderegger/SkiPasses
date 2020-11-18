@@ -11,7 +11,7 @@ A data frame with 5 columns.
 \item{Season}{The season the pass was issued for.}
 \item{PassType}{The pass type.}
 \item{Start}{The Start date for when the pass is active.}
-\item{End}{The End date for when the pass is active.}
+\item{Finish}{The finish date for when the pass is active.}
 }
 }
 \usage{
@@ -20,15 +20,15 @@ Passes
 \description{
 This dataset contains information about each season pass bought. We have
 columns for the person that bought the pass along with the ski season the
-pass was bought for and the type of pass. The Start and End dates denote
+pass was bought for and the type of pass. The Start and Finish dates denote
 when the pass is applicable.
 }
 \details{
-If a person has their pass revoked for some
-reason, we'll adjust the end date. If the pass is just suspended, we will
+If a person has their pass revoked or suspended for some
+reason, we'll adjust the Finish date. If the pass is re-instated, we will
 insert another row in the table with a Start value at the end of the
-suspension period and End at the End of the season. If a customer keeps
-getting their pass revoked in a season, they will have several rows in
+suspension period and Finish at the end of the season. If a customer keeps
+getting their pass revoked multiple times in a season, they will have several rows in
 this table.
 }
 \keyword{datasets}

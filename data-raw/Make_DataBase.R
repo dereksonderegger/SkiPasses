@@ -137,7 +137,10 @@ for( i in 1:20 ){
 }
 
 Customers <- Customers %>%
-  select(PersonID, GivenName, Surname, StreetAddress, City, State, ZipCode, Gender, Birthday)
+  select(PersonID, GivenName, Surname, StreetAddress, City, State, ZipCode, Gender, Birthday) %>%
+  mutate(Birthday = paste(Birthday))
+
+
 usethis::use_data(Customers, overwrite = TRUE)
 
 
@@ -196,6 +199,11 @@ for( i in 1:20 ){
     penalty=Penalty)
 }
 
+
+Passes <- Passes %>%
+  rename(Finish = End) %>%         # End is a reserved word in SQL
+  mutate(Start = paste(Start)) %>% # SQLite doesn't support Dates
+  mutate(Finish = paste(Finish))
 
 usethis::use_data(Passes, overwrite = TRUE)
 usethis::use_data(PatrolIssues, overwrite=TRUE)
