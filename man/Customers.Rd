@@ -14,6 +14,7 @@ A data frame with the following columns:
 \item{City}{City of the customer}
 \item{State}{State of the customer's address}
 \item{ZipCode}{Zipcode of the customer's address}
+\item{Gender}{The customer's stated gender}
 \item{Birthday}{Customer's date of Birth}
 }
 }

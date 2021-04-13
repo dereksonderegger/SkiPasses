@@ -68,7 +68,6 @@ SkiPasses_sqlite <- function(path=NULL, refresh=FALSE){
     path = system.file("extdata", "SkiPasses.db", package = "SkiPasses")
   }
   con <- DBI::dbConnect(RSQLite::SQLite(), dbname = path)
-  # browser()
   if( length(DBI::dbListTables(con)) == 0 | refresh==TRUE ){
     DBI::dbWriteTable(con, 'Customers',    as.data.frame(SkiPasses::Customers), overwrite=TRUE)
     DBI::dbWriteTable(con, 'Passes',       as.data.frame(SkiPasses::Passes), overwrite=TRUE)

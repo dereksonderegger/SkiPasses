@@ -15,6 +15,7 @@
 #' @format A data frame with the following columns:
 #' \describe{
 #' \item{PersonID}{A unique identifier identifying a person within the database.}
+#' \item{PassID}{A unique identifier identifying a pass within the database.}
 #' \item{Season}{The season the pass was issued for.}
 #' \item{PassType}{The pass type.}
 #' \item{Start}{The Start date for when the pass is active.}

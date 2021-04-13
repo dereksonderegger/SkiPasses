@@ -46,7 +46,7 @@ BlackOutDates <- rbind(
   BlackOutDates,
   expand.grid(PassType='Weekday', Date=unique(BlackOutDates$Date)),
   expand.grid(PassType='Weekday', Date=all_weekends(ymd('2019-11-20'),ymd('2020-4-20'))),
-  expand.grid(PassType='Weekday', Date=all_weekends(ymd('2021-11-20'),ymd('2022-4-20')))
+  expand.grid(PassType='Weekday', Date=all_weekends(ymd('2020-11-20'),ymd('2021-4-20')))
 )
 BlackOutDates <- BlackOutDates %>%
   mutate(Date = paste(Date))
