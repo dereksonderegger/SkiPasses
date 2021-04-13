@@ -5,7 +5,7 @@
 \alias{BlackOutDates}
 \title{BlackOutDates}
 \format{
-A data frame with 4 columns.
+A data frame with the following columns:
 \describe{
 \item{PassType}{The ski season the pass type was for.}
 \item{Date}{The passtype}

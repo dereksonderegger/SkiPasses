@@ -5,7 +5,7 @@
 \alias{PassTypes}
 \title{PassTypes}
 \format{
-A data frame with 4 columns.
+A data frame with the following columns:
 \describe{
 \item{Season}{The ski season the pass type was for.}
 \item{PassType}{The passtype}

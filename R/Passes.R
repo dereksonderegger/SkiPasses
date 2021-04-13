@@ -12,7 +12,7 @@
 #' getting their pass revoked multiple times in a season, they will have several rows in
 #' this table.
 #'
-#' @format A data frame with 5 columns.
+#' @format A data frame with the following columns:
 #' \describe{
 #' \item{PersonID}{A unique identifier identifying a person within the database.}
 #' \item{Season}{The season the pass was issued for.}

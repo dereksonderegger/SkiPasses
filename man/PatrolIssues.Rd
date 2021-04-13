@@ -5,7 +5,7 @@
 \alias{PatrolIssues}
 \title{PatrolIssues}
 \format{
-A data frame with 3 columns.
+A data frame with the following columns:
 \describe{
 \item{PersonID}{A unique identifier identifying a person within the database.}
 \item{Date}{The date of the incident.}

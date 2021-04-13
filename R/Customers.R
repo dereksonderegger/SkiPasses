@@ -4,7 +4,7 @@
 #' We store the customers address here because we don't care about a customer's
 #' historical address. So updates to a customers address here is fine.
 #'
-#' @format A data frame with 8 columns.
+#' @format A data frame with the following columns:
 #' \describe{
 #' \item{PersonID}{A unique identifier identifying a person within the database.}
 #' \item{GivenName}{The customer's first name.}

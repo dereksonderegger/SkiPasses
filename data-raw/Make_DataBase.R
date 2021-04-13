@@ -48,11 +48,13 @@ BlackOutDates <- rbind(
   expand.grid(PassType='Weekday', Date=all_weekends(ymd('2019-11-20'),ymd('2020-4-20'))),
   expand.grid(PassType='Weekday', Date=all_weekends(ymd('2021-11-20'),ymd('2022-4-20')))
 )
+BlackOutDates <- BlackOutDates %>%
+  mutate(Date = paste(Date))
 usethis::use_data(BlackOutDates, overwrite = TRUE)
 
 # Adults
 FakeNames  <-
-  read_csv('~/GitHub/444/data-raw/FakeNameGenerator.csv') %>%
+  read_csv('./data-raw/FakeNameGenerator.csv') %>%
   sample_frac(n=n(), resample=TRUE) %>%
   mutate(City='Flagstaff', State='AZ', ZipCode='86004') %>%
   select(-MiddleInitial, -Birthday) %>%
