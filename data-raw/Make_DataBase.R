@@ -13,8 +13,6 @@ PassTypes <- tribble(
     '2020-2021',  'PowerPass',
     '2020-2021',  'PowerPassSelect',
     '2020-2021',  'Weekday')
-usethis::use_data(PassTypes, overwrite = TRUE)
-
 
 BlackOutDates <-
     rbind(
@@ -50,7 +48,6 @@ BlackOutDates <- rbind(
 )
 BlackOutDates <- BlackOutDates %>%
   mutate(Date = paste(Date))
-usethis::use_data(BlackOutDates, overwrite = TRUE)
 
 # Adults
 FakeNames  <-
@@ -142,10 +139,6 @@ Customers <- Customers %>%
   select(PersonID, GivenName, Surname, StreetAddress, City, State, ZipCode, Gender, Birthday) %>%
   mutate(Birthday = paste(Birthday))
 
-
-usethis::use_data(Customers, overwrite = TRUE)
-
-
 Passes <- Passes %>%
   mutate(Start = if_else(Season=='2019-2020',
                         ymd('2019-11-1'),
@@ -157,7 +150,6 @@ Passes <- Passes %>%
 Passes <- Passes %>%
   mutate(PassID = paste('Pass',1:n(), sep='_')) %>%
   select(PersonID, PassID, Season, PassType, Start, End)
-
 
 insert_warning <- function(personID, date, issue, penalty=1){
   # browser()
@@ -188,7 +180,6 @@ insert_warning(
 )
 PatrolIssues <- PatrolIssues %>% slice(1)
 
-
 for( i in 1:20 ){
   punk <- Passes %>% slice_sample(n=1)
   Date = runif(1, min=punk$Start, max=punk$End) %>% as.Date(origin = "1970-01-01")
@@ -201,12 +192,24 @@ for( i in 1:20 ){
     penalty=Penalty)
 }
 
-
 Passes <- Passes %>%
   rename(Finish = End) %>%         # End is a reserved word in SQL
   mutate(Start = paste(Start)) %>% # SQLite doesn't support Dates
   mutate(Finish = paste(Finish))
 
-usethis::use_data(Passes, overwrite = TRUE)
-usethis::use_data(PatrolIssues, overwrite=TRUE)
+# Rename tables to start with .. to indicate it is system tables.
+..Passes        <- Passes
+..PatrolIssues  <- PatrolIssues
+..Customers     <- Customers
+..BlackOutDates <- BlackOutDates
+..PassTypes     <- PassTypes
+
+
+save(..Passes, ..PatrolIssues, ..Customers, ..BlackOutDates, ..PassTypes,
+  file='inst/extdata/sysdata.rda')
+
+# usethis::use_data(PatrolIssues,   overwrite = TRUE, internal = TRUE)
+# usethis::use_data(Customers,      overwrite = TRUE, internal = TRUE)
+# usethis::use_data(BlackOutDates,  overwrite = TRUE, internal = TRUE)
+# usethis::use_data(PassTypes,      overwrite = TRUE, internal = TRUE)
 

@@ -69,11 +69,14 @@ SkiPasses_sqlite <- function(path=NULL, refresh=FALSE){
   }
   con <- DBI::dbConnect(RSQLite::SQLite(), dbname = path)
   if( length(DBI::dbListTables(con)) == 0 | refresh==TRUE ){
-    DBI::dbWriteTable(con, 'Customers',    as.data.frame(SkiPasses::Customers), overwrite=TRUE)
-    DBI::dbWriteTable(con, 'Passes',       as.data.frame(SkiPasses::Passes), overwrite=TRUE)
-    DBI::dbWriteTable(con, 'PassTypes',    as.data.frame(SkiPasses::PassTypes), overwrite=TRUE)
-    DBI::dbWriteTable(con, 'BlackOutDates',as.data.frame(SkiPasses::BlackOutDates), overwrite=TRUE)
-    DBI::dbWriteTable(con, 'PatrolIssues', as.data.frame(SkiPasses::PatrolIssues), overwrite=TRUE)
+    file <- system.file("extdata", "sysdata.rda", package = "SkiPasses")
+    load(file)
+    DBI::dbWriteTable(con, 'Customers',    as.data.frame(..Customers), overwrite=TRUE)
+    DBI::dbWriteTable(con, 'Passes',       as.data.frame(..Passes), overwrite=TRUE)
+    DBI::dbWriteTable(con, 'PassTypes',    as.data.frame(..PassTypes), overwrite=TRUE)
+    DBI::dbWriteTable(con, 'BlackOutDates',as.data.frame(..BlackOutDates), overwrite=TRUE)
+    DBI::dbWriteTable(con, 'PatrolIssues', as.data.frame(..PatrolIssues), overwrite=TRUE)
+    rm(..Customers, ..Passes, ..PassTypes, ..BlackOutDates, ..PatrolIssues)
   }
   return(con)
 }
